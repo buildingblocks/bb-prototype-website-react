@@ -10,6 +10,7 @@ var livereload = require('gulp-livereload');
 var shell = require('gulp-shell');
 var rename = require('gulp-rename');
 var config = require('./_gulp/config');
+var connect = require('gulp-connect');
 
 // build tasks
 var build = function(callback) {
@@ -98,14 +99,31 @@ gulp.task('build_assets_watch', ['buildListings'], function () {
     gulp.watch(config.paths.temp.src + '**/*', ['assets']);
     gulp.watch(config.paths.images.src + '**/*', ['assets']);
     gulp.watch(config.paths.scripts.src + '**/*.js', ['scripts-dev']);
-    gulp.watch('page_data/**/*', ['commandline']);
-    gulp.watch('pages/**/*', ['commandline']);
-    gulp.watch('layouts/**/*', ['commandline']);
+    gulp.watch('_pages/**/*', ['commandline']);
+    gulp.watch('_layouts/**/*', ['commandline']);
+    gulp.watch('_master-pages/**/*', ['commandline']);
+    gulp.watch('_data/**/*', ['commandline']);
+});
+
+// SERVE TASK
+gulp.task('serve', ['build_assets_watch'], function(callback) {
+    var open = require('open');
+    var serverPort = Math.floor((Math.random() * 1000) + 3000);
+    var localhost = 'http://localhost:' + serverPort;
+
+    connect.server({
+        host: 'localhost',
+        port: serverPort,
+        livereload: true,
+        root: config.basePaths.dist
+    });
+
+    open(localhost, 'google chrome');
 });
 
 
-gulp.task('default', ['build_assets']);
+gulp.task('default', ['build_assets_watch']);
+
 gulp.task('dev', ['build_assets']);
 
-gulp.task('build_watch', ['build_assets_watch']);
 
