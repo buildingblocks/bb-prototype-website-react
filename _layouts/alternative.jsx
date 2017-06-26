@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // header and footer to be included on every page
 import Header from '../_components/header.jsx';
 import Footer from '../_components/footer.jsx';
+import Grid from '../_components/grid.jsx';
 
 // add components here
 import Test from '../_components/test.jsx';
@@ -20,6 +21,7 @@ class Alternative extends React.Component {
 
   render() {
     const pageClass = this.props.pageClass ? this.props.pageClass : '';
+    const visibleGrid = this.props.visibleGrid;
 
     return (
       <div>
@@ -37,6 +39,13 @@ class Alternative extends React.Component {
                 </div>
               </div>
             </div>
+
+            {
+              visibleGrid ? 
+              <Grid />
+              : null
+            }
+            
           </main>
         </div>
         <Footer />
