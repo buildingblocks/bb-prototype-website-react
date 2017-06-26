@@ -24,7 +24,6 @@ gulp.task('listings', function(callback) {
                 filenames.push('"' + file + '"');
             }
         });
-        console.log(filenames);
         fs.writeFile(buildFolder + 'index.html', '--- \nbaseFile: _bb.html\npages: [' + filenames + ']\nrtemplate: listings.jsx \npublished: ' + datePublished + '\ntitle: Page Listings\n---');
         callback();
     });

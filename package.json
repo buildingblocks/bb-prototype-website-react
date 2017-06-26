@@ -1,13 +1,21 @@
 {
-  "name": "examples",
-  "version": "7.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "bb-prototype-website-react",
+  "title": "BB Prototype Website React",
+  "version": "1.0.0",
+  "description": "Default Building Blocks static react prototype template.",
   "private": true,
   "scripts": {
     "build": "node build.js"
   },
-  "author": "",
+  "homepage": "https://github.com/buildingblocks/bb-prototype-website-react",
+  "issues": "https://github.com/buildingblocks/bb-prototype-website-react/issues",
+  "authors": [
+    "Andrew Blackledge (https://github.com/ablackledge)"
+  ],
+  "contributors": [
+    "Paul Welsh (https://github.com/spacedawwwg)",
+    "John Cashmore (https://github.com/JohnCashmore)"
+  ],
   "dependencies": {
     "babel-cli": "^6.0.0",
     "babel-loader": "^7.0.0",
