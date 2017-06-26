@@ -86,13 +86,14 @@ gulp.task('build_assets', ['buildListings'], function () {
     );
 });
 
-gulp.task('build_assets_watch', ['buildListings'], function () {
+gulp.task('build_assets_watch', ['buildListings'], function (callback) {
     runSequence(
         'clean:everything',
         'commandline',
         'styles',
         'scripts-dev',
-        'assets'
+        'assets',
+        callback
     );
     livereload.listen();
     gulp.watch(config.paths.styles.src + '**/*.scss', ['styles', 'assets']);
@@ -106,7 +107,7 @@ gulp.task('build_assets_watch', ['buildListings'], function () {
 });
 
 // SERVE TASK
-gulp.task('serve', ['build_assets_watch'], function(callback) {
+gulp.task('open_connection', function(callback) {
     var open = require('open');
     var serverPort = Math.floor((Math.random() * 1000) + 3000);
     var localhost = 'http://localhost:' + serverPort;
@@ -121,6 +122,11 @@ gulp.task('serve', ['build_assets_watch'], function(callback) {
     open(localhost, 'google chrome');
 });
 
+gulp.task('serve', ['build_assets_watch'], function () {
+    runSequence(
+        'open_connection'
+    );
+});
 
 gulp.task('default', ['build_assets_watch']);
 

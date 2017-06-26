@@ -13,6 +13,7 @@ var month = jsDate.getMonth() + 1;
 var date = jsDate.getDate();
 var hours = jsDate.getHours();
 var mins = jsDate.getMinutes();
+mins = mins < 10 ? '0' + mins : mins;
 var datePublished = year + '-' + month + '-' + date + ' ' + hours + ':' + mins;
 
 gulp.task('listings', function(callback) {
@@ -20,7 +21,7 @@ gulp.task('listings', function(callback) {
     fs.readdir(buildFolder, (err, files) => {
         files.forEach(file => {
             let fileType = path.extname(file);
-            if (fileType === '.html' && file !== 'index.html') {
+            if (fileType === '.html' && file !== 'index.html' && file !== 'styleguide.html') {
                 filenames.push('"' + file + '"');
             }
         });
