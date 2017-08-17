@@ -5,34 +5,13 @@ var runSequence = require('run-sequence').use(gulp);
 var wrench = require('wrench');
 var del = require('del');
 var environments = require('gulp-environments');
-var gutil = require('gulp-util');
+var gutil = require('gulp-util'); // takes variables passed from command line
 var livereload = require('gulp-livereload');
 var shell = require('gulp-shell');
 var rename = require('gulp-rename');
 var config = require('./_gulp/config');
 var connect = require('gulp-connect');
-
-// build tasks
-var build = function(callback) {
-    runSequence(
-        'clean:everything',
-        'styles',
-        'scripts-dev',
-        'assets',
-        callback
-    );
-};
-
-var prodBuild = function(callback) {
-    runSequence(
-        'clean:everything',
-        'styles',
-        'minify-css',
-        'scripts-prod',
-        'assets',
-        callback
-    );
-};
+var cachebust = require('gulp-cache-bust');
 
 var makeListings = function(callback) {
     runSequence(
@@ -55,55 +34,83 @@ gulp.task('clean:everything', function() {
     return del('dist');
 });
 
-// DEV build
-gulp.task('build', function(callback) {
-    environments.current(environments.development);
-    build(callback);
-});
-
-// PROD build
-gulp.task('production', function(callback) {
-    environments.current(environments.production);
-    prodBuild(callback);
-});
-
 // build listings
 gulp.task('buildListings', function(callback) {
     makeListings(callback);
 });
 
+// cachebust
+gulp.task('cachebust', function() {
+    gulp.src('dist/**/*.html')
+        .pipe(cachebust({
+            type: 'timestamp'
+        }))
+        .pipe(gulp.dest('dist'));
+});
+
+// run commandline commands
 gulp.task('commandline', shell.task([
 	'node build',
 ]));
 
-gulp.task('build_assets', ['buildListings'], function () {
+
+// build tasks
+gulp.task('build', ['buildListings'], function () {
     runSequence(
         'clean:everything',
         'commandline',
         'styles',
-        'scripts-dev',
+        // 'scripts-dev',
+        'scripts-prod',
+        'assets',
+        'cachebust'
+    );
+});
+
+gulp.task('build_cached', ['buildListings'], function () {
+    runSequence(
+        'clean:everything',
+        'commandline',
+        'styles',
+        // 'scripts-dev',
+        'scripts-prod',
         'assets'
     );
 });
 
-gulp.task('build_assets_watch', ['buildListings'], function (callback) {
+gulp.task('production', ['buildListings'], function (callback) {
+    runSequence(
+        'clean:everything',
+        'commandline',
+        'styles',
+        'minify-css',
+        'scripts-prod',
+        'assets',
+        'cachebust',
+        callback
+    );
+});
+
+gulp.task('build_watch', ['buildListings'], function (callback) {
     runSequence(
         'clean:everything',
         'commandline',
         'styles',
         'scripts-dev',
         'assets',
+        'cachebust',
         callback
     );
     livereload.listen();
-    gulp.watch(config.paths.styles.src + '**/*.scss', ['styles', 'assets']);
-    gulp.watch(config.paths.temp.src + '**/*', ['assets']);
-    gulp.watch(config.paths.images.src + '**/*', ['assets']);
-    gulp.watch(config.paths.scripts.src + '**/*.js', ['scripts-dev']);
+    gulp.watch(config.paths.styles.src + '**/*.scss', ['styles', 'assets','cachebust']);
+    gulp.watch(config.paths.temp.src + '**/*', ['assets','cachebust']);
+    gulp.watch(config.paths.images.src + '**/*', ['assets','cachebust']);
+    gulp.watch(config.paths.scripts.src + '**/*.js', ['scripts-dev','cachebust']);
     gulp.watch('_pages/**/*', ['commandline']);
     gulp.watch('_layouts/**/*', ['commandline']);
     gulp.watch('_master-pages/**/*', ['commandline']);
     gulp.watch('_data/**/*', ['commandline']);
+    gulp.watch('_components/**/*', ['commandline']);
 });
 
 // SERVE TASK
@@ -122,14 +129,42 @@ gulp.task('open_connection', function(callback) {
     open(localhost, 'google chrome');
 });
 
-gulp.task('serve', ['build_assets_watch'], function () {
+
+// tasks to run from command line
+// build and watch files then serve site in chrome
+gulp.task('serve', ['build_watch'], function () {
     runSequence(
         'open_connection'
     );
 });
 
-gulp.task('default', ['build_assets_watch']);
+// build and watch files
+gulp.task('default', ['build_watch']);
 
-gulp.task('dev', ['build_assets']);
+// just build
+gulp.task('dev', ['build']);
 
+// just build but without cache bust
+gulp.task('dev-cache', ['build_cached']);
+
+
+// Backend tasks
+// deploy just runs the production build (minification tasks included in this) and then copies over to location specified in commandline
+gulp.task('deploy', ['production'], function() {
+    gulp.src(config.basePaths.dist + '**/*')
+    .pipe(gulp.dest(gutil.env.dest));
+});
+
+// build-sln will run the prod build and then copy files & folders over to the specified backend directory
+// local backend build
+gulp.task('build-sln', ['production'], function() {
+    gulp.src(config.paths.scripts.dist + '**/*')
+    .pipe(gulp.dest(config.paths.sln.web + '/_scripts/'));
+
+    gulp.src(config.paths.styles.dist + '**/*')
+    .pipe(gulp.dest(config.paths.sln.web + '/_styles/'));
+
+    gulp.src(config.paths.images.dist + '**/*')
+    .pipe(gulp.dest(config.paths.sln.web + '/_images/'));
+});
 

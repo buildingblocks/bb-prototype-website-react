@@ -11,6 +11,10 @@ var paths = {
       src: 'node_modules/jquery/dist/jquery.min.js'
   },
 
+  node_babelpoly: {
+    src: 'node_modules/babel-polyfill/dist/polyfill.min.js'
+  },
+
 	scripts: {
 		src: basePaths.src + 'assets/_scripts/',
 		dist: basePaths.dist + '_scripts/'
@@ -80,6 +84,7 @@ var inputFiles = {
 var outputFiles = {
   scripts: {
     main: 'scripts.js',
+    mainES5: 'scripts.es5.js',
     mainMin: 'scripts.min.js',
     validation: 'validation.js'
   },

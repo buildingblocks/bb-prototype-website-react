@@ -30,9 +30,6 @@ class Listings extends React.Component {
                             </a>
                             <h1 className="project-title">
                                 {globalData.title}
-                                <span className="last-modified">
-                                    <b>Last Modified:</b> <span>{this.props.published}</span> 
-                                </span>
                             </h1>
                     </header>
                     <div className="content">

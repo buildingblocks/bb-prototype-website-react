@@ -230,7 +230,7 @@ class Form extends React.Component {
                   Option disabled
                 </label>
                 <label className="checkbox disabled">
-                  <input type="checkbox" value="option3" name="optionsCheckboxList" id="optionsCheckboxList5" disabled checked />
+                  <input type="checkbox" value="option3" name="optionsCheckboxList" id="optionsCheckboxList5" disabled defaultChecked />
                               <label className="checkbox--replace" htmlFor="optionsCheckboxList5" role="presentation"></label>
                   Option disabled and checked
                 </label>
@@ -263,7 +263,7 @@ class Form extends React.Component {
               <label className="control-label">Radio buttons</label>
               <div className="controls">
                 <label className="radio">
-                  <input type="radio" name="optionsRadios1" id="optionsRadios1" value="option1" checked />
+                  <input type="radio" name="optionsRadios1" id="optionsRadios1" value="option1" defaultChecked />
                   <label htmlFor="optionsRadios1" className="radio--replace"></label>
                   Option one with a 'checked' attribute applied
                 </label>
@@ -278,7 +278,7 @@ class Form extends React.Component {
                   Option disabled
                 </label>
                 <label className="radio disabled">
-                  <input type="radio" name="optionsRadios1" id="optionsRadios4" value="option3" disabled checked />
+                  <input type="radio" name="optionsRadios1" id="optionsRadios4" value="option3" disabled defaultChecked />
                   <label htmlFor="optionsRadios4" className="radio--replace"></label>
                   Option disabled and checked
                 </label>
@@ -315,12 +315,23 @@ class Form extends React.Component {
                 <span className="field-validation-message field-validation-valid" data-valmsg-for="textarea" data-valmsg-replace="true"></span>
               </div>
             </div>
+
+            <div className="control-group">
+              <div className="control-label">
+                <label htmlFor="textarea">Toggle</label>
+              </div>
+              <div className="controls">
+                <input className="toggle-input" value="toggle-on" name="toggle-a" id="toggle-a" type="checkbox"/>
+                <label className="toggle-label" htmlFor="toggle-a"></label>
+              </div>
+            </div>
+
             <div className="control-group">
               <div className="controls">
                 <label className="checkbox control-inline" htmlFor="requiredCheckbox1">
                   <input type="checkbox" name="requiredCheckbox1" id="requiredCheckbox1" value="1" data-val="true" data-val-atleast="A mandatory checkbox input" data-val-atleast-minimum="1" />
-                              <label className="checkbox--replace" htmlFor="requiredCheckbox1" role="presentation"></label>
-                              By ticking this box you agree to the <a href="#">terms and conditions</a>
+                  <label className="checkbox--replace" htmlFor="requiredCheckbox1" role="presentation"></label>
+                  By ticking this box you agree to the <a href="#">terms and conditions</a>
                 </label>
                 <span className="field-validation-message field-validation-valid" data-valmsg-for="requiredCheckbox1" data-valmsg-replace="true"></span>
               </div>
