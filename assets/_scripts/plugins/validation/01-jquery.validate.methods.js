@@ -89,13 +89,16 @@
 		var atleastLength = 0;
 		$elements.each(function() {
 			$input = $(this);
-			if ($input.is(':checkbox:not(:checked)') || $input.is(':radio:not(:checked)')) {
-				return false;
-			} else if ($input.val().length === 0) {
-				return false;
+			
+			if ($input.is(':checkbox') || $input.is(':radio')) {
+				if ($input.is(':checked')) {
+					atleastLength++;
+				}
+			} else if ($input.val().length > 0) {
+				atleastLength++;
 			}
-			atleastLength++;
 		});
+		
 		if (atleastLength >= minimum) {
 			return true;
 		} else {
