@@ -53,6 +53,14 @@ gulp.task('commandline', shell.task([
 	'node build',
 ]));
 
+gulp.task('run_backstop_refs',  shell.task([
+    'backstop reference'
+]));
+
+gulp.task('run_backstop_test', shell.task([
+    'backstop test'
+]));
+
 
 // build tasks
 gulp.task('build', ['buildListings'], function () {
@@ -129,6 +137,19 @@ gulp.task('open_connection', function(callback) {
     open(localhost, 'google chrome');
 });
 
+gulp.task('open_port', function() {
+    var open = require('open');
+    var serverPort = 4000;
+    var localhost = 'http://localhost:' + serverPort;
+
+    connect.server({
+        host: 'localhost',
+        port: serverPort,
+        livereload: false,
+        root: config.basePaths.dist
+    });
+});
+
 
 // tasks to run from command line
 // build and watch files then serve site in chrome
@@ -136,6 +157,14 @@ gulp.task('serve', ['build_watch'], function () {
     runSequence(
         'open_connection'
     );
+});
+
+gulp.task('backstop-ref', ['open_port', 'run_backstop_refs'], function (callback) {
+    connect.serverClose();
+});
+
+gulp.task('backstop-test', ['open_port', 'run_backstop_test'], function (callback) {
+    connect.serverClose();
 });
 
 // build and watch files

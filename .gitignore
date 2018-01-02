@@ -31,6 +31,7 @@ node_modules
 dist
 build
 test/results
+backstop_data/bitmaps_test
 FRONTEND.md
 TODO.md
 _combined.less

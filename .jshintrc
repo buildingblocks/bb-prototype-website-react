@@ -4,6 +4,8 @@
 	"eqeqeq": true,
 	"eqnull": true,
 	"evil": true,
+	"loopfunc" : true,
+	"esversion": 6,
 	"globals": {
 		"$": true,
 		"bb": true,
@@ -21,7 +23,12 @@
 		"setInterval": true,
 		"setTimeout": true,
 		"window": true,
-		"picturefill": true
+		"picturefill": true,
+		"YT": true,
+		"DOMParser": true,
+		"slick": true,
+		"imagesLoaded": true,
+		"Packery": true
 	},
 	"immed": true,
 	"latedef": true,

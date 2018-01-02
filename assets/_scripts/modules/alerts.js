@@ -54,7 +54,7 @@ var _buildingBlocks = _buildingBlocks ? _buildingBlocks : {};
 			hideAlerts: function() {
 				var self = this,
 					$alerts = self.$alertsContainer.find('.alert');
-					
+
 				if ($alerts.length === 0) {
 					return false;
 				}
@@ -156,6 +156,41 @@ var _buildingBlocks = _buildingBlocks ? _buildingBlocks : {};
 					self.showAlerts();
 					self.showContainer();
 				});
+			},
+			addAlertToPage(type, text, timeout) {
+				const self = this;
+
+				const alertTemplate = `
+					<div class="flash-alerts flash-alerts--in">
+						<div class="flash-alerts-inner">
+							<div class="alert-container">
+								<div class="alert alert--${type} alert--show alert--in" data-timeout="${timeout}">
+									<div class="alert--inner">
+										<button class="alert--dismiss" title="Close alert">
+											<span role="presentation" aria-hidden="true" class="icon icon--x"></span>
+											<span class="visually-hidden">Close Alert</span>
+										</button>
+										
+										<div class="alert__content">
+											<div class="alert__icon">
+												<span role="presentation" aria-hidden="true" class="icon icon--${type}"></span>
+											</div>
+											<div class="alert__copy">
+												<p>${text}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+				const _Div = document.createElement('div');
+				_Div.innerHTML = alertTemplate;
+				document.body.appendChild(_Div);
+				self.bindEvents();
+				self.hideAlerts();
 			}
 		}
 	});
