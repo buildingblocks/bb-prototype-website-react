@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Partial App</title>
+    <meta name="description" content="" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/_images/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" media="screen" href="/_styles/styles.css" />
+
+    <!-- Feature Detection - custom tests also concatenated into this file -->
+    <script src="/_scripts/modernizr.js"></script>
+
+  </head>
+  <body class="">
+
+    <div id='contents'>
+      <div>
+        <header class="header" role="banner">
+          <h1 class="header__title">Header</h1>
+        </header>
+        <div id="page" class="">
+          <main class="main" role="main">
+            
+            <div class="layout layout--a">
+              <div class="region region--a">
+                <div class="region-inner">
+                  
+                  <div id="react-app-component" class="react-app-component block block--size-a"></div>
+
+
+                  <article class="gridblock block block--size-a">
+                    <h1 class="gridblock__title">.block--size-a</h1>
+                    <p class="gridblock__body">100% width at all break points.</p>
+                  </article>
+                  <article class="gridblock block block--size-b">
+                    <h1 class="gridblock__title">.block--size-b</h1>
+                    <p class="gridblock__body">100% width up to break-point-d. 66% over break-point-d</p>
+                  </article>
+                  <article class="gridblock block block--size-c"><h1 class="gridblock__title">.block--size-c</h1><p class="gridblock__body">100% width up to break-point-d. 33% over break-point-d</p></article>
+                  <article class="gridblock block block--size-d"><h1 class="gridblock__title">.block--size-d</h1><p class="gridblock__body">100% width up to break-point-d. 50% over break-point-d</p></article>
+                  <article class="gridblock block block--size-d"><h1 class="gridblock__title">.block--size-d</h1><p class="gridblock__body">100% width up to break-point-d. 50% over break-point-d</p></article>
+                  <article class="gridblock block block--size-e"><h1 class="gridblock__title">.block--size-e</h1><p class="gridblock__body">100% width up to break-point-d. 60% over break-point-d</p></article>
+                  <article class="gridblock block block--size-f"><h1 class="gridblock__title">.block--size-f</h1><p class="gridblock__body">100% width up to break-point-d. 40% over break-point-d</p></article>
+                  <article class="gridblock block block--size-g"><h1 class="gridblock__title">.block--size-g</h1><p class="gridblock__body">100% width up to break-point-d. 25% over break-point-d</p></article>
+                  <article class="gridblock block block--size-g"><h1 class="gridblock__title">.block--size-g</h1><p class="gridblock__body">100% width up to break-point-d. 25% over break-point-d</p></article>
+                  <article class="gridblock block block--size-g"><h1 class="gridblock__title">.block--size-g</h1><p class="gridblock__body">100% width up to break-point-d. 25% over break-point-d</p></article>
+                  <article class="gridblock block block--size-g"><h1 class="gridblock__title">.block--size-g</h1><p class="gridblock__body">100% width up to break-point-d. 25% over break-point-d</p></article>
+                </div>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="layout layout--a">
+                <div class="region region--a">
+                  <div class="region-inner">
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                    <div class="block block--single"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        <footer class="footer" role="footer"></footer>
+      </div>
+      
+    </div>
+
+    <!--jQuery -->
+    <script src="/_scripts/jquery.min.js"></script>
+
+    <!-- babel polyfill - needed but will be added via react  -->
+    <!-- <script src="/_scripts/polyfill.min.js"></script>  -->
+    <!--Validation Scripts -->
+    <script src="/_scripts/validation.js"></script>
+
+    <!-- Script loader -->
+    <script>
+      function getParameterByName(name) {
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+              results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      var debugQS = getParameterByName('debug');
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = '/_scripts/scripts.js';
+
+      if (debugQS && debugQS.length > 0) {
+        if (debugQS === 'js') {
+          script.src = '/_scripts/scripts.js';
+        }
+      }
+
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

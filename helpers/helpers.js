@@ -9,7 +9,8 @@ export const themes = {
   themeB: 'theme-b',
   themeC: 'theme-c',
   themeD: 'theme-d',
-  themeE: 'theme-e'
+  themeE: 'theme-e',
+  themeF: 'theme-f'
 };
 
 export const textColours = {

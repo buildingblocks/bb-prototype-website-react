@@ -25,13 +25,7 @@ class Grid extends React.Component {
               <div className="block block--single"></div>
               {/* 12 */}
 
-              <div className="block block--single"></div>
-              <div className="block block--single"></div>
-              <div className="block block--single"></div>
-              <div className="block block--single"></div>
-              <div className="block block--single"></div>
-
-              <div className="block block--single"></div>
+              {/* <div className="block block--single"></div>
               <div className="block block--single"></div>
               <div className="block block--single"></div>
               <div className="block block--single"></div>
@@ -39,6 +33,12 @@ class Grid extends React.Component {
 
               <div className="block block--single"></div>
               <div className="block block--single"></div>
+              <div className="block block--single"></div>
+              <div className="block block--single"></div>
+              <div className="block block--single"></div>
+
+              <div className="block block--single"></div>
+              <div className="block block--single"></div> */}
               {/* 24 */}
 
             </div>

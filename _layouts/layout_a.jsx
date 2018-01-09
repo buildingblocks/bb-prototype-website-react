@@ -38,9 +38,14 @@ class LayoutA extends React.Component {
         <Header />
         <div id="page" className={pageClass}>
           <main class="main" role="main">
+
+            
             <div className="layout layout--a">
               <div className="region region--a">
                 <div className="region-inner">
+            
+                {/* React App component */}
+                <div id="react-app-component" className="react-app-component block block--size-a"></div>
 
                 {
                   currentData.map((component, index) => {
@@ -65,6 +70,7 @@ class LayoutA extends React.Component {
             }
             
           </main>
+          
         </div>
         <Footer />
       </div>

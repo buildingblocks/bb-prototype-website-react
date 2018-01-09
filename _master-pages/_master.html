@@ -9,13 +9,7 @@
     <meta name="description" content="" />
 
     <!-- Icons -->
-    <link rel="shortcut icon" href="/images/favicon.ico" />
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon-precomposed.png" />
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57-precomposed.png" sizes="57x57" />
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon-72x72-precomposed.png" sizes="72x72" />
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon-114x114-precomposed.png" sizes="114x114" />
-    <link rel="apple-touch-icon" href="/images/apple-touch-icon-144x144-precomposed.png" sizes="144x144" />
-    <meta name="msapplication-TileImage" content="/images/apple-touch-icon-144x144-precomposed.png" />
+    <link rel="shortcut icon" href="/_images/favicon.ico" />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
 
     <!-- CSS -->
@@ -31,8 +25,12 @@
 
     <!--jQuery -->
     <script src="/_scripts/jquery.min.js"></script>
-    <!-- babel polyfill  -->
-    <script src="/_scripts/polyfill.min.js"></script> 
+
+    <!-- React app -->
+    <script type="text/javascript" src="/bundle.js"></script>
+
+    <!-- babel polyfill - needed but will be added via react  -->
+    <!-- <script src="/_scripts/polyfill.min.js"></script>  -->
     <!--Validation Scripts -->
     <script src="/_scripts/validation.js"></script>
 
@@ -51,7 +49,7 @@
       script.src = '/_scripts/scripts.min.js';
 
       if (debugQS && debugQS.length > 0) {
-        if (debugQS === 'true') {
+        if (debugQS === 'js') {
           script.src = '/_scripts/scripts.js';
         }
       }

@@ -9,7 +9,7 @@ textarea,
     &.input-validation-error-replace,
     &.input-validation-error-replace:hover,
     &.input-validation-error-replace:focus {
-        border: 1px solid #c20000;
+        border: 1px solid $alert-color-error;
     }
 }
 
@@ -19,7 +19,7 @@ textarea,
 
     & + .radio--replace,
     & + .checkbox--replace {
-        border-color: #c20000;
+        border-color: $alert-color-error;
     }
 }
 
@@ -29,7 +29,7 @@ textarea,
 
 .field-validation-error,
 .validation-summary-errors {
-    color: #c20000;
+    color: $alert-color-error;
     display: block;
     clear: both;
 }

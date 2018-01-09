@@ -1,8 +1,8 @@
 //alerts.scss
 $alert-notice: #0081ad;
-$alert-success: #95c23d;
-$alert-error: #e63417;
-$alert-warning: #d07709;
+$alert-success: $alert-color-good;
+$alert-error: $alert-color-error;
+$alert-warning: $alert-color-warning;
 
 .flash-alerts {
 	width: 100%;
@@ -175,12 +175,8 @@ $alert-warning: #d07709;
 		left: -30px;
 	}
 
-	@media #{$BPG} {
-		// top: 0;
-		left: -40px;
-	}		
-
-	.icon {
+	.icon,
+	.svg-icon {
 		font-size: 20px;
 		z-index: 3;
 		color: $brand-white;
@@ -188,6 +184,18 @@ $alert-warning: #d07709;
 		@media #{$BPG} {
 			font-size: 24px;
 		}	
+	}
+
+	.svg-icon {
+		width: 26px;
+	}
+
+	.svg-icon__stroke {
+		stroke: $brand-white;
+	}
+
+	.svg-icon__fill {
+		fill: $brand-white;
 	}
 }
 
@@ -206,7 +214,7 @@ $alert-warning: #d07709;
 			line-height: 26px;
 		}
 	}
-			
+
 
 	a {
 		color: $alert-error;
@@ -244,6 +252,10 @@ $alert-warning: #d07709;
 	*:last-child {
 		margin-bottom: 0;
 	}
+}
+
+.alert__copy {
+	padding-left: 10px;
 }
 
 .alert--dismiss {

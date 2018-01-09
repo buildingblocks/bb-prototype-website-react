@@ -12,6 +12,7 @@ var rename = require('gulp-rename');
 var config = require('./_gulp/config');
 var connect = require('gulp-connect');
 var cachebust = require('gulp-cache-bust');
+var webpackStream = require('webpack-stream');
 
 var makeListings = function(callback) {
     runSequence(
@@ -61,6 +62,14 @@ gulp.task('run_backstop_test', shell.task([
     'backstop test'
 ]));
 
+gulp.task('run_webpack_app', shell.task([
+    'npm run dev'
+]));
+
+gulp.task('run_webpack_app_build', shell.task([
+    'npm run build'
+]));
+
 
 // build tasks
 gulp.task('build', ['buildListings'], function () {
@@ -71,7 +80,8 @@ gulp.task('build', ['buildListings'], function () {
         // 'scripts-dev',
         'scripts-prod',
         'assets',
-        'cachebust'
+        'cachebust',
+        'run-webpack'
     );
 });
 
@@ -95,6 +105,7 @@ gulp.task('production', ['buildListings'], function (callback) {
         'scripts-prod',
         'assets',
         'cachebust',
+        'run-webpack',
         callback
     );
 });
@@ -107,10 +118,11 @@ gulp.task('build_watch', ['buildListings'], function (callback) {
         'scripts-dev',
         'assets',
         'cachebust',
+        'run-webpack',
         callback
     );
     livereload.listen();
-    gulp.watch(config.paths.styles.src + '**/*.scss', ['styles', 'assets','cachebust']);
+    gulp.watch([config.paths.styles.src + '**/*.scss', '!' + config.paths.styles.src + '**/styles.scss', '!' + config.paths.styles.src + '**/Editor.scss'], ['styles', 'assets','cachebust']);
     gulp.watch(config.paths.temp.src + '**/*', ['assets','cachebust']);
     gulp.watch(config.paths.images.src + '**/*', ['assets','cachebust']);
     gulp.watch(config.paths.scripts.src + '**/*.js', ['scripts-dev','cachebust']);
@@ -151,14 +163,6 @@ gulp.task('open_port', function() {
 });
 
 
-// tasks to run from command line
-// build and watch files then serve site in chrome
-gulp.task('serve', ['build_watch'], function () {
-    runSequence(
-        'open_connection'
-    );
-});
-
 gulp.task('backstop-ref', ['open_port', 'run_backstop_refs'], function (callback) {
     connect.serverClose();
 });
@@ -168,13 +172,27 @@ gulp.task('backstop-test', ['open_port', 'run_backstop_test'], function (callbac
 });
 
 // build and watch files
-gulp.task('default', ['build_watch']);
+gulp.task('default', ['build_watch', 'run_webpack_app_build']);
 
 // just build
-gulp.task('dev', ['build']);
+gulp.task('dev', ['build', 'run_webpack_app_build']);
 
 // just build but without cache bust
 gulp.task('dev-cache', ['build_cached']);
+
+// tasks to run from command line
+// build and watch files then serve site in chrome
+gulp.task('serve', ['build_watch', 'run_webpack_app_build'], function () {
+    runSequence(
+        'open_connection'
+    );
+});
+
+gulp.task('serve_app', ['build_watch'], function () {
+    runSequence(
+        'run_webpack_app'
+    );
+});
 
 
 // Backend tasks
@@ -196,4 +214,17 @@ gulp.task('build-sln', ['production'], function() {
     gulp.src(config.paths.images.dist + '**/*')
     .pipe(gulp.dest(config.paths.sln.web + '/_images/'));
 });
+
+gulp.task("run-webpack", function () {
+    var files = ["webpack.js", "server.js"];
+    var destination = config.scriptRoot;
+
+    return gulp.src(files)
+        .pipe(webpackStream(require("./webpack.config.tridion.js")))
+        .pipe(gulp.dest("./dist/_scripts"));
+});
+
+
+
+
 

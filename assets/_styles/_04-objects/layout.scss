@@ -14,7 +14,7 @@
 	margin: 0 $ggw;
 	max-width: $max-width;
 
-	@media #{$BPG} {
+	@media #{$BPF} {
 		margin: 0 auto;
 	}
 }
@@ -91,57 +91,65 @@
 
 @mixin region-blocks($region-outer-width:0, $region-inner-width:0) {
 	.block--single {
+
 		@media (min-width: $break-point-d) {
 			@include fluid-width($gcw*1, $region-inner-width);
 		}
 	}
 
 	.block--size-a {
+
 		@media (min-width: $break-point-d) {
 			// 100%
-			 @include fluid-width(($gcw*24) + ($ggw*23), $region-inner-width);
+			 @include fluid-width(($gcw*12) + ($ggw*11), $region-inner-width);
 		}
 	}
 
 	.block--size-b {
+
 		@media (min-width: $break-point-d) {
 			// 66%
-			@include fluid-width(($grid-column-width*16) + ($grid-gutter-width*15),  $region-inner-width);
+			@include fluid-width(($grid-column-width*8) + ($grid-gutter-width*7),  $region-inner-width);
 		}
 	}
 
 	.block--size-c {
+
 		@media (min-width: $break-point-d) {
 			// 33%
-			@include fluid-width(($gcw*8) + ($ggw*7), $region-inner-width);
+			@include fluid-width(($gcw*4) + ($ggw*3), $region-inner-width);
 		}
 	}
 
 	.block--size-d {
+
 		@media (min-width: $break-point-d) {
 			// 50%
-			@include fluid-width(($gcw*12) + ($ggw*11), $region-inner-width);
+			@include fluid-width(($gcw*6) + ($ggw*5), $region-inner-width);
 		}
 	}
 
 	.block--size-e {
+
 		@media (min-width: $break-point-d) {
 			// 60%
-			@include fluid-width(($gcw*14) + ($ggw*13), $region-inner-width);
+			@include fluid-width(($gcw*7) + ($ggw*6), $region-inner-width);
 		}
 	}
 
 	.block--size-f {
+
 		@media (min-width: $break-point-d) {
 			// 40%
-			@include fluid-width(($gcw*10) + ($ggw*9), $region-inner-width);
+			@include fluid-width(($gcw*5) + ($ggw*4), $region-inner-width);
 		}
 	}
 
 	.block--size-g {
+
 		@media (min-width: $break-point-d) {
 			// 25%
-			@include fluid-width(($gcw*6) + ($ggw*5), $region-inner-width);
+			@include fluid-width(($gcw*3) + ($ggw*2), $region-inner-width);
 		}
 	}
 }

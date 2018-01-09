@@ -36,7 +36,7 @@ class Listings extends React.Component {
 
                         <h2 className="bb-page-title">Styleguide</h2>
                         <ul className="file-list">
-                            <li className="file"><a href="styleguide.html?debug=true">Styleguide <span>styleguide.html</span></a></li>
+                            <li className="file"><a href="styleguide.html?debug=js">Styleguide <span>styleguide.html</span></a></li>
                         </ul>
 
                         <div className="bb-page-list" data-page-type="fullPage">
@@ -46,7 +46,7 @@ class Listings extends React.Component {
                                 pages.map(function (page, index) {
                                     return(
                                         <li key={index} className="file">
-                                            <a href={page + '?debug=true'}>{page}</a>
+                                            <a href={page + '?debug=js'}>{page}</a>
                                         </li>
                                     )
                                 })
@@ -57,7 +57,7 @@ class Listings extends React.Component {
                     </div>
 
                     <footer className="footer" role="contentinfo">
-                        <p>&copy; Copyright 2017 Building Blocks Ltd.</p>
+                        <p>&copy; Copyright 2018 Building Blocks Ltd.</p>
                     </footer>
 
                 </div>

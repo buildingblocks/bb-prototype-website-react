@@ -1,4 +1,8 @@
 // radios and checkboxes
+
+$input-color-a: $brand-color-f;
+
+// radios and checkboxes
 input[type="radio"],
 input[type="checkbox"] {
 	margin: 0;
@@ -36,7 +40,7 @@ input[type="radio"] {
 	}
 
 	&.disabled {
-		color: $brand-color-g;
+		color: $input-color-a;
 	}
 
 	.checkbox--replace,
@@ -75,21 +79,21 @@ input[type="radio"] {
 
 	&:hover,
 	input:active + & {
-		border-color: $brand-color-g;
+		border-color: $input-color-a;
 	}
 
 	input:focus + & {
-		border-color: $brand-color-g;
+		border-color: $input-color-a;
 	}
 
 	input[disabled] + & {
-		border-color: $brand-color-g;
-		color: $brand-color-g;
+		border-color: $input-color-a;
+		color: $input-color-a;
 		cursor: not-allowed;
 
 		&:hover,
 		&:focus {
-			border-color: $brand-color-g;
+			border-color: $input-color-a;
 		}
 	}
 }
@@ -133,10 +137,10 @@ input[type="checkbox"]:checked {
 	}
 
 	input[disabled] + & {
-		border-color: $brand-color-g;
+		border-color: $input-color-a;
 
 		&:after {
-			color: $brand-color-g;
+			color: $input-color-a;
 		}
 	}
 }
@@ -167,14 +171,13 @@ input[type="checkbox"]:checked {
 	}
 
 	input[disabled] + & {
-		border-color: $brand-color-g;
+		border-color: $input-color-a;
 
 		&:after {
-			background: $brand-color-g;
+			background: $input-color-a;
 		}
 	}
 }
-
 
 
 .checkbox--replace-input,

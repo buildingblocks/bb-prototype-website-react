@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { createMarkup } from '../../helpers/helpers.js';
 
+import Icon from '../_misc/icon.jsx';
+
 class Alert extends React.Component {
   render() {
     const jsonData = this.props.data;
@@ -11,15 +13,13 @@ class Alert extends React.Component {
     const alertStyles = {
       warning: 'alert--warning',
       error: 'alert--error',
-      success: 'alert--success',
-      notice: 'alert--notice'
+      success: 'alert--success'
     };
 
     const alertIcons = {
-      warning: 'icon--alert-warning',
-      error: 'icon--alert-error',
-      success: 'icon--alert-success',
-      notice: 'icon--alert-notice'
+      warning: 'exclamation-circle',
+      error: 'cross-circle',
+      success: 'check-circle'
     };
 
     return (
@@ -46,7 +46,7 @@ class Alert extends React.Component {
                     </button>				
                     <div className="alert__content">
                       <div className="alert__icon">
-                        <span role="presentation" aria-hidden="true" className={"icon " + alertIcon}></span>
+                        <Icon iconName={alertIcon} />
                       </div>
                       <div className="alert__copy">
                         <p>{item.copy}</p>

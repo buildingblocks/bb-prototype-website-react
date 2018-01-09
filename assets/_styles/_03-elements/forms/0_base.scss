@@ -11,7 +11,7 @@ $input-padding-y: $vr;
 $input-padding-x: 15px;
 
 $input-icon-width: 16px;
-$input-color-a: $brand-color-f;
+$input-color-a: $brand-color-c;
 
 
 // Elements with actions need pointers
@@ -173,11 +173,11 @@ select,
 	}
 
 	&:focus {
-		border: 1px solid $brand-color-c;
+		border: 1px solid $brand-color-b;
 		outline: none;
 	}
 
-	@include placeholder($brand-color-f);
+	@include placeholder($brand-color-c);
 
 	&[disabled] {
 		background: #f0f0f0;

@@ -28,7 +28,8 @@
 		"DOMParser": true,
 		"slick": true,
 		"imagesLoaded": true,
-		"Packery": true
+		"Packery": true,
+		"CircleType": true
 	},
 	"immed": true,
 	"latedef": true,

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Icon from '../_misc/icon.jsx';
+
 class Buttons extends React.Component {
   render() {
     return (
@@ -10,91 +12,29 @@ class Buttons extends React.Component {
           <header>
             <h2 className="header--stylesheet">Default buttons <small>(.btn)</small></h2>
           </header>
-          <div class="form-actions">
-            <button type="submit" class="btn">.btn</button>
-            <button type="submit" class="btn btn--icon-right">
-              .btn (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--icon-right" disabled>.btn (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-a">.btn--style-a</button>
-            <button type="submit" class="btn btn--style-a btn--icon-right">
+          <div className="form-actions styleguide-seperator">
+            <button type="submit" className="btn btn--style-a">.btn--style-a</button>
+            <button type="submit" className="btn btn--style-a btn--icon-right">
               .btn--style-a (icon)
-              <i class="icon icon--arrow-right"></i>
+              <Icon iconName="chevron-right" />
             </button>
-            <button type="submit" class="btn btn--style-a btn--icon-right" disabled>.btn--style-a (disabled)</button>
+            <button type="submit" className="btn btn--style-a btn--icon-right" disabled>.btn--style-a (disabled)</button>
           </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-b">.btn--style-b</button>
-            <button type="submit" class="btn btn--style-b btn--icon-right">
+          <div className="form-actions styleguide-seperator">
+            <button type="submit" className="btn btn--style-b">.btn--style-b</button>
+            <button type="submit" className="btn btn--style-b btn--icon-right">
               .btn--style-b (icon)
-              <i class="icon icon--arrow-right"></i>
+              <Icon iconName="chevron-right" />
             </button>
-            <button type="submit" class="btn btn--style-b btn--icon-right" disabled>.btn--style-b (disabled)</button>
+            <button type="submit" className="btn btn--style-b btn--icon-right" disabled>.btn--style-b (disabled)</button>
           </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-c">.btn--style-c</button>
-            <button type="submit" class="btn btn--style-c btn--icon-right">
+          <div className="form-actions styleguide-seperator">
+            <button type="submit" className="btn btn--style-c">.btn--style-c</button>
+            <button type="submit" className="btn btn--style-c btn--icon-right">
               .btn--style-c (icon)
-              <i class="icon icon--arrow-right"></i>
+              <Icon iconName="chevron-right" />
             </button>
-            <button type="submit" class="btn btn--style-c btn--icon-right" disabled>.btn--style-c (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-d">.btn--style-d</button>
-            <button type="submit" class="btn btn--style-d btn--icon-right">
-              .btn--style-d (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--style-d btn--icon-right" disabled>.btn--style-d (disabled)</button>
-          </div>
-        </section>
-
-        <section className="block block--size-a">
-          <header>
-            <h2 className="header--stylesheet">Small buttons <small>(.btn.btn--small)</small></h2>
-          </header>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--small">.btn.btn--small</button>
-            <button type="submit" class="btn btn--icon-right btn--small">
-              .btn.btn--small (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--icon-right btn--small" disabled>.btn.btn--small (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-a btn--small">.btn--style-a.btn--small</button>
-            <button type="submit" class="btn btn--style-a btn--icon-right btn--small">
-              .btn--style-a.btn--small (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--style-a btn--icon-right btn--small" disabled>.btn--style-a.btn--small (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-b btn--small">.btn--style-b.btn--small</button>
-            <button type="submit" class="btn btn--style-b btn--icon-right btn--small">
-              .btn--style-b.btn--small (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--style-b btn--icon-right btn--small" disabled>.btn--style-b.btn--small (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-c btn--small">.btn--style-c.btn--small</button>
-            <button type="submit" class="btn btn--style-c btn--icon-right btn--small">
-              .btn--style-c.btn--small (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--style-c btn--icon-right btn--small" disabled>.btn--style-c.btn--small (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-d btn--small">.btn--style-d.btn--small</button>
-            <button type="submit" class="btn btn--style-d btn--icon-right btn--small">
-              .btn--style-d.btn--small (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--style-d btn--icon-right btn--small" disabled>.btn--style-d.btn--small (disabled)</button>
+            <button type="submit" className="btn btn--style-c btn--icon-right" disabled>.btn--style-c (disabled)</button>
           </div>
         </section>
 
@@ -102,45 +42,30 @@ class Buttons extends React.Component {
           <header>
             <h2 className="header--stylesheet">Large buttons <small>(.btn.btn--large)</small></h2>
           </header>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--large">.btn.btn--large</button>
-            <button type="submit" class="btn btn--icon-right btn--large">
-              .btn.btn--large (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--icon-right btn--large" disabled>.btn.btn--large (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-a btn--large">.btn--style-a.btn--large</button>
-            <button type="submit" class="btn btn--style-a btn--icon-right btn--large">
+
+          <div className="form-actions styleguide-seperator">
+            <button type="submit" className="btn btn--style-a btn--large">.btn--style-a.btn--large</button>
+            <button type="submit" className="btn btn--style-a btn--icon-right btn--large">
               .btn--style-a.btn--large (icon)
-              <i class="icon icon--arrow-right"></i>
+              <Icon iconName="chevron-right" />
             </button>
-            <button type="submit" class="btn btn--style-a btn--icon-right btn--large" disabled>.btn--style-a.btn--large (disabled)</button>
+            <button type="submit" className="btn btn--style-a btn--icon-right btn--large" disabled>.btn--style-a.btn--large (disabled)</button>
           </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-b btn--large">.btn--style-b.btn--large</button>
-            <button type="submit" class="btn btn--style-b btn--icon-right btn--large">
+          <div className="form-actions styleguide-seperator">
+            <button type="submit" className="btn btn--style-b btn--large">.btn--style-b.btn--large</button>
+            <button type="submit" className="btn btn--style-b btn--icon-right btn--large">
               .btn--style-b.btn--large (icon)
-              <i class="icon icon--arrow-right"></i>
+              <Icon iconName="chevron-right" />
             </button>
-            <button type="submit" class="btn btn--style-b btn--icon-right btn--large" disabled>.btn--style-b.btn--large (disabled)</button>
+            <button type="submit" className="btn btn--style-b btn--icon-right btn--large" disabled>.btn--style-b.btn--large (disabled)</button>
           </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-c btn--large">.btn--style-c.btn--large</button>
-            <button type="submit" class="btn btn--style-c btn--icon-right btn--large">
+          <div className="form-actions styleguide-seperator">
+            <button type="submit" className="btn btn--style-c btn--large">.btn--style-c.btn--large</button>
+            <button type="submit" className="btn btn--style-c btn--icon-right btn--large">
               .btn--style-c.btn--large (icon)
-              <i class="icon icon--arrow-right"></i>
+              <Icon iconName="chevron-right" />
             </button>
-            <button type="submit" class="btn btn--style-c btn--icon-right btn--large" disabled>.btn--style-c.btn--large (disabled)</button>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn--style-d btn--large">.btn--style-d.btn--large</button>
-            <button type="submit" class="btn btn--style-d btn--icon-right btn--large">
-              .btn--style-d.btn--large (icon)
-              <i class="icon icon--arrow-right"></i>
-            </button>
-            <button type="submit" class="btn btn--style-d btn--icon-right btn--large" disabled>.btn--style-d.btn--large (disabled)</button>
+            <button type="submit" className="btn btn--style-c btn--icon-right btn--large" disabled>.btn--style-c.btn--large (disabled)</button>
           </div>
         </section>
       </div>

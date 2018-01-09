@@ -362,3 +362,72 @@
     }
 }
 
+// Styleguide page elements
+.box-grid {
+
+    @media #{$BPD} {
+        display: flex;
+        width: 100%;
+        margin-bottom: $vr*5;
+    }
+}
+
+.box {
+    color: $brand-white;
+    text-align: center;
+    margin-bottom: $vr*3;
+    
+    @media #{$BPD} {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1 0 auto;
+        margin: 0 5px;
+        width: 50px;
+    }
+
+    @media #{$BPE} {
+        margin: 0 10px;
+    }
+}
+
+.box__title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: $vr;
+
+    @media #{$BPD} {
+        margin-bottom: $vr*2;
+    }
+}
+
+.box__tile {
+    padding: 40px 0;
+
+    @media #{$BPE} {
+        padding: 60px 0;
+    }
+}
+
+.styleguide .icons {
+
+    li {
+        margin-bottom: $vr*3;
+    }
+}
+
+.styleguide-seperator {
+    margin-bottom: $vr;
+}
+
+.styleguide .illustrations {
+
+    .svg-icon,
+    svg {
+        width: 100px;
+    }
+}
+
+.styleguide .patterns {
+    clear: both;
+}

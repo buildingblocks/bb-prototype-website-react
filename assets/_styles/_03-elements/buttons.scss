@@ -2,23 +2,12 @@
 //
 // Button styles can be applied to anything with the `.btn` class applied.
 // However, typically you'll want to apply these to only `<a>` and `<button>` elements for the best rendering.
+$btn-height-med: 44px;
+$btn-height-lrg: 50px;
 
-$btn-border-width: 2px;
-
-$btn-padding-y-small: $vr;
-$btn-padding-x-small: 15px;
-$btn-line-height-small: $vr*4 - $btn-border-width*2;
-$btn-total-height-small: $btn-padding-y-small*2 + $btn-line-height-small;
-
-$btn-padding-y-default: $vr*2;
-$btn-padding-x-default: 20px;
-$btn-line-height-default: $vr*4 - $btn-border-width*2;
-$btn-total-height-default: $btn-padding-y-default*2 + $btn-line-height-default;
-
-$btn-padding-y-large: $vr*2;
-$btn-padding-x-large: 30px;
-$btn-line-height-large: $vr*7 - $btn-border-width*2;
-$btn-total-height-large: $btn-padding-y-large*2 + $btn-line-height-large;
+$btn-padding: 30px;
+$btn-padding-right-icon-med: 15px;
+$btn-padding-right-icon-lrg: 20px;
 
 input::-moz-focus-inner {
 	border: 0;
@@ -35,37 +24,29 @@ button::-moz-focus-inner {
 
 	background-color: $brand-black;
 	background-image: none;
-	border: $btn-border-width solid $brand-black;
 	box-shadow: none;
+	border: none;
 	color: $brand-white;
 	cursor: pointer;
 	display: inline-block;
 	font-family: $font-family-base;
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: $font-weight-bold;
-	line-height: $btn-line-height-small;
 	margin-bottom: 0; // For input.btn
-	min-height: $btn-total-height-small;
-	padding: $btn-padding-y-small $btn-padding-x-small;
+	min-height: $btn-height-med;
+	padding: 0 $btn-padding;
+	position: relative;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	transition: background 250ms, border-color 250ms;
+	transition: background-color 250ms;
 	vertical-align: top;
 	white-space: nowrap;
 	-webkit-font-smoothing: antialiased; // get rid of faux bolding
-
-	@media (min-width: $break-point-d) {
-		font-size: $font-size-base;
-		line-height: $btn-line-height-default;
-		min-height: $btn-total-height-default;
-		padding: $btn-padding-y-default $btn-padding-x-default;
-	}
+	margin-right: 10px;
 
 	&:hover,
 	&:focus {
-		background: lighten($brand-black, 10%);
-		border-color: lighten($brand-black, 10%);
 		box-shadow: none;
 	}
 
@@ -78,69 +59,53 @@ button::-moz-focus-inner {
 	&.disabled,
 	&[disabled],
 	fieldset[disabled] & {
-		opacity: 0.65;
-
 		box-shadow: none;
 		cursor: default;
 		pointer-events: none; // Future-proof disabling of clicks
 	}
-}
 
-.btn--small {
-	font-size: 12px;
-	line-height: $btn-line-height-small;
-	min-height: $btn-total-height-small;
-	padding: $btn-padding-y-small $btn-padding-x-small;
+	&.btn--icon-right {
+		padding-right: $btn-padding + $btn-padding-right-icon-med;
+	}
 
-	@media (min-width: $break-point-d) {
-		font-size: 12px;
-		line-height: $btn-line-height-small;
-		min-height: $btn-total-height-small;
-		padding: $btn-padding-y-small $btn-padding-x-small;
+	.svg-icon {
+		width: 10px;
+	}
+
+	// amend per btn style as needed
+	.svg-icon__stroke,
+	.svg-icon__fill {
+		stroke: currentColor;
 	}
 }
 
 .btn--large {
-	font-size: $font-size-base;
-	line-height: $btn-line-height-default;
-	min-height: $btn-total-height-default;
-	padding: $btn-padding-y-default $btn-padding-x-default;
+	font-size: 20px;
+	min-height: $btn-height-lrg;
 
-	@media (min-width: $break-point-d) {
-		font-size: 18px;
-		line-height: $btn-line-height-large;
-		min-height: $btn-total-height-large;
-		padding: $btn-padding-y-large $btn-padding-x-large;
+	&.btn--icon-right {
+		padding-right: $btn-padding + $btn-padding-right-icon-lrg;
 	}
 }
 
 .btn--icon-right {
 	position: relative;
-	padding-right: 25px;
 
-	@media #{$BPF} {
-		padding-right: 45px;
-	}
-
-	.icon {
+	.icon,
+	.svg-icon {
 		position: absolute;
-		top: 50%;
+		top: calc(50% - 1px);
+		right: 25px;
 		transition: transform 250ms ease-in-out;
-		transform: translate(4px, -50%);
-
-		@media #{$BPF} {
-			transform: translate(14px, -50%);
-		}
+		transform: perspective(0px) translate(0, -50%);
+		-webkit-font-smoothing: antialiased;
 	}
 
 	&:hover {
 
-		.icon {
-			transform: translate(8px, -50%);
-
-			@media #{$BPF} {
-				transform: translate(20px, -50%);
-			}
+		.icon,
+		.svg-icon {
+			transform: translate(4px, -50%);
 		}
 	}
 }
@@ -149,47 +114,108 @@ button::-moz-focus-inner {
 .btn--style-a {
 	background-color: $brand-color-a;
 	border-color: $brand-color-a;
-	color: #FFF;
+	color: $brand-white;
 
-	&:hover,
+	&.disabled,
+	&[disabled] {
+		opacity: 1;
+		background-color: #FFC4C4;
+
+		&:after {
+			background-color: #FFB1AE;
+		}
+	}
+
+	&.btn--large {
+		font-size: 18px;
+	}
+
+	&:hover {
+		background: #FF3535;
+
+		&:after {
+			transform: translateY(2px);
+		}
+	}
+
 	&:focus {
-		background: darken($brand-color-a, 10%);
-		border-color: darken($brand-color-a, 10%);
+		background-color: $brand-color-a;
+
+		&:after {
+			background-color: $brand-color-a;
+			transform: none;
+		}
 	}
 }
 
 .btn--style-b {
-	background-color: $brand-color-b;
-	border-color: $brand-color-b;
-	color: #FFF;
+	$btn-style-b-color: #D91A14;
+	background-color: transparent;
+	border: solid 2px $brand-color-b;
+	color: $brand-color-b;
+	font-size: 14px;
+
+	.svg-icon {
+		width: 8px;
+		top: calc(50% - 1px);
+	}
+
+	.svg-icon__stroke {
+		stroke: $brand-color-b;
+	}
 
 	&:hover,
 	&:focus {
-		background: darken($brand-color-b, 10%);
-		border-color: darken($brand-color-b, 10%);
+		border-color: $btn-style-b-color;
+		color: $btn-style-b-color;
+
+		.svg-icon__stroke {
+			stroke: $btn-style-b-color;
+		}
+	}
+
+	&.disabled,
+	&[disabled] {
+		border-color: #FFC4C4;
+		color: #FFC4C4;
+
+		.svg-icon__stroke {
+			stroke: #FFC4C4;
+		}
 	}
 }
 
 .btn--style-c {
-	background-color: $brand-color-c;
-	border-color: $brand-color-c;
-	color: #FFF;
+	background-color: transparent;
+	color: $brand-color-a;
+	font-size: 14px;
+	padding-left: 0;
 
-	&:hover,
-	&:focus {
-		background: darken($brand-color-c, 10%);
-		border-color: darken($brand-color-c, 10%);
+	.svg-icon {
+		width: 8px;
+		top: calc(50% - 1px);
 	}
-}
 
-.btn--style-d {
-	background-color: $brand-color-d;
-	border-color: $brand-color-d;
-	color: #FFF;
+	.svg-icon__stroke {
+		stroke: $brand-color-a;
+	}
 
 	&:hover,
 	&:focus {
-		background: lighten($brand-color-d, 10%);
-		border-color: lighten($brand-color-d, 10%);
+		color: $brand-color-b;
+		text-decoration: underline;
+
+		.svg-icon__stroke {
+			stroke: $brand-color-b;
+		}
+	}
+
+	&.disabled,
+	&[disabled] {
+		color: $gray-b;
+
+		.svg-icon__stroke {
+			stroke: $gray-b;
+		}
 	}
 }

@@ -9,6 +9,7 @@ import Icons from './icons.jsx';
 import Lists from './lists.jsx';
 import Paragraphs from './paragraphs.jsx';
 import Alerts from '../_misc/alerts.jsx';
+import Colours from './colours.jsx';
 
 class Styleguide extends React.Component {
   render() {
@@ -20,13 +21,8 @@ class Styleguide extends React.Component {
       },
       {
         "alertType": "warning",
-        "copy": "There was a problem completing your subscription, please try again.",
+        "copy": "This is a warning about your siubmission, please try again.",
         "timeout": 1500
-      },
-      {
-        "alertType": "notice",
-        "copy": "There was a problem completing your subscription, please try again.",
-        "timeout": 2500
       },
       {
         "alertType": "error",
@@ -34,9 +30,10 @@ class Styleguide extends React.Component {
       }
     ];
     return (
-      <div>
+      <div className="styleguide">
         <Headings />
         <Paragraphs />
+        <Colours />
         <Blockquote />
         <Lists />
         <Form />
@@ -48,5 +45,5 @@ class Styleguide extends React.Component {
     )
   }
 }
-
+module.exports = Styleguide;
 export default Styleguide;
