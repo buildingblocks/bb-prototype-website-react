@@ -110,7 +110,7 @@ gulp.task('build_watch', ['buildListings'], function (callback) {
         callback
     );
     livereload.listen();
-    gulp.watch(config.paths.styles.src + '**/*.scss', ['styles', 'assets','cachebust']);
+    gulp.watch([config.paths.styles.src + '**/*.scss', '!' + config.paths.styles.src + '**/styles.scss', '!' + config.paths.styles.src + '**/Editor.scss'], ['styles', 'assets','cachebust']);
     gulp.watch(config.paths.temp.src + '**/*', ['assets','cachebust']);
     gulp.watch(config.paths.images.src + '**/*', ['assets','cachebust']);
     gulp.watch(config.paths.scripts.src + '**/*.js', ['scripts-dev','cachebust']);
